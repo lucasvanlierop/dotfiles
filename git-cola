@@ -1,0 +1,19 @@
+#/usr/bin/env bash
+
+docker run \
+    -d \
+    --name git-cola \
+    -u $UID \
+    -e HOME=/home/$UID \
+    -e DISPLAY=$DISPLAY \
+    -e QT_X11_NO_MITSHM=1 \
+    -v /tmp/.X11-unix:/tmp/.X11-unix \
+    -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK \
+    -v ~/.ssh/:/home/$UID/.ssh:ro \
+    -v ~/.gitconfig:/home/$UID/.gitconfig:ro \
+    -v ~/.git-credential-cache:/home/$UID/.git-credential-cache:ro \
+    -v ~/.gitignore_global:/home/$UID/.gitignore_global:ro \
+    -v ~/.config/git-cola:/home/$UID/.config/git-cola:rw \
+    -v ~/workspace/:/workspace \
+    -v $(dirname $SSH_AUTH_SOCK):$(dirname $SSH_AUTH_SOCK) \
+    lucasvanlierop/git-cola
