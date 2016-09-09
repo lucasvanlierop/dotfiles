@@ -1,0 +1,223 @@
+#/usr/bin/local/env bash
+
+set -e
+
+LAUNCHER_DIR="/usr/share/applications"
+LOGO_DIR="/usr/share/pixmaps"
+EXECUTABLE_DIR="/usr/local/bin"
+COMMAND="$@"
+
+function create_executable()
+{
+    local executable="$EXECUTABLE_DIR/$name"
+    local file_name=`basename $0`
+    local file_path=`readlink -f $0`
+    local file_path_install=$EXECUTABLE_DIR/$file_name
+
+    cat $file_path | sudo tee $file_path_install > /dev/null
+    sudo chmod o+x $file_path_install
+
+    sudo tee $executable > /dev/null <<EOT
+#!/usr/bin/env bash
+$file_path_install $name \$@
+EOT
+    sudo chmod o+x $executable
+
+    echo $executable
+}
+
+# Writes an Ubuntu launcher configuration to the local filesystem
+function create_launcher_configuration() {
+    local name="$1"
+    local version="$2"
+    local title="$3"
+    local docker_image="$4"
+    local logo=`create_launcher_logo $name $docker_image`
+    local executable=`create_executable $name`
+
+    sudo tee "$LAUNCHER_DIR/$name.desktop" > /dev/null <<EOT
+[Desktop Entry]
+Version=$version
+Type=Application
+Name=$title
+Exec=$executable
+Icon=$name
+Comment=
+Categories=
+Terminal=false
+StartupNotify=true
+StartupWMClass=$name
+EOT
+}
+
+# Fetches a launcher logo from the container
+# And writes it the local filesystem
+# See also: # https://help.ubuntu.com/community/UnityLaunchersAndDesktopFiles
+function create_launcher_logo()
+{
+    local name="$1"
+    local docker_image="$2"
+    local ext=
+    local logo=
+
+    docker run \
+        -it \
+        --rm \
+        $docker_image dump-logo \
+        | base64 -i --decode\
+        > /tmp/logo
+
+   ext=`get_file_extension /tmp/logo`
+   logo="$name.$ext"
+
+   sudo mv /tmp/logo $LOGO_DIR/$logo
+
+
+   echo $logo
+}
+
+get_file_extension() {
+    local file="$1"
+    echo $(grep "$(mimetype -b $file)" /etc/mime.types | awk '{print $2}')
+}
+
+del_stopped(){
+	local name=$1
+	local state=$(docker inspect --format "{{.State.Running}}" $name 2>/dev/null)
+
+	if [[ "$state" == "false" ]]; then
+		docker rm $name
+	fi
+}
+
+# Usage: starts intellij by default
+# Run with install to install
+
+# Starts the application
+function intellij() {
+    local name="intellij"
+    local version="ultimate-2016.2.3"
+    local title="JetBrains IntelliJ"
+    local config_dir=".IntelliJIdea2016.2"
+    local docker_image="lucasvanlierop/intellij:$version"
+
+    if [[ $1 == "install" ]]; then
+        create_launcher_configuration "$name" "$version" "$title" "$docker_image"
+        echo "Installed $title $version"
+        return 0
+    fi
+
+    if [ ! -d $HOME/$config_dir ]; then
+        mkdir $HOME/$config_dir
+    fi
+
+    if [ ! -d $HOME/.android ]; then
+        mkdir $HOME/.android
+    fi
+
+    if [ ! -d $HOME/.java ]; then
+        mkdir $HOME/.java/
+    fi
+
+    del_stopped $name
+
+    docker run \
+        --name=$name \
+        -d \
+        -e LOCAL_UID=$UID \
+        -e LOCAL_USER=$USER \
+        -e HOME=$HOME \
+        -e DISPLAY=$DISPLAY \
+        -e QT_X11_NO_MITSHM=1 \
+        -v /tmp/.X11-unix:/tmp/.X11-unix \
+        -v $HOME/.gitconfig:$HOME/.gitconfig:ro \
+        -v $HOME/.git-credential-cache:$HOME/.git-credential-cache:ro \
+        -v $HOME/.gitignore_global:$HOME/.gitignore_global:ro \
+        -v $HOME/.java:$HOME/.java:rw \
+        -v $HOME/.android:$HOME/.android:rw \
+        -v $HOME/$config_dir:$HOME/$config_dir:rw \
+        -v $HOME/scala-2.11.8:/scala-2.11.8 \
+        -v $HOME/workspace/:/workspace \
+        $docker_image
+}
+
+function phpstorm() {
+    local name="phpstorm"
+    local version="10.0.4"
+    local title="JetBrains PHPStorm"
+    local config_dir=".WebIde100"
+    local docker_image="lucasvanlierop/phpstorm:$version"
+
+    if [[ $1 == "install" ]]; then
+        create_launcher_configuration "$name" "$version" "$title" "$docker_image"
+        echo "Installed $title $version"
+        return 0
+    fi
+
+    if [ ! -d $HOME/$config_dir ]; then
+        mkdir $HOME/$config_dir
+    fi
+
+    del_stopped $name
+
+    docker run \
+        --name phpstorm \
+        -d \
+        --ipc host \
+        -e LOCAL_UID=$UID \
+        -e LOCAL_USER=$USER \
+        -e HOME=$HOME \
+        -e DISPLAY=$DISPLAY \
+        -e QT_X11_NO_MITSHM=1 \
+        -v /tmp/.X11-unix:/tmp/.X11-unix \
+        -v $HOME/.gitconfig:$HOME/.gitconfig:ro \
+        -v $HOME/.git-credential-cache:$HOME/.git-credential-cache:ro \
+        -v $HOME/.gitignore_global:$HOME/.gitignore_global:ro \
+        -v $HOME/$config_dir:$HOME/$config_dir:rw \
+        -v $HOME/workspace/:/workspace \
+        $docker_image
+}
+# Starts the application
+function git-cola() {
+    local name="git-cola"
+    local version="latest"
+    local title="Git Cola"
+    local docker_image="lucasvanlierop/git-cola:$version"
+    local config_dir=".config/git-cola"
+
+    if [[ $1 == "install" ]]; then
+        create_launcher_configuration "$name" "$version" "$title" "$docker_image"
+        echo "Installed $title $version"
+        return 0
+    fi
+
+    del_stopped $name
+
+    docker run \
+        --name git-cola \
+        -d \
+        --ipc host \
+        -e LOCAL_UID=$UID \
+        -e LOCAL_USER=$USER \
+        -e HOME=$HOME \
+        -e DISPLAY=$DISPLAY \
+        -e QT_X11_NO_MITSHM=1 \
+        -v /tmp/.X11-unix:/tmp/.X11-unix \
+        -e SSH_AUTH_SOCK=$SSH_AUTH_SOCK \
+        -v $HOME/.ssh/:$HOME/.ssh:ro \
+        -v $HOME/.gitconfig:$HOME/.gitconfig:ro \
+        -v $HOME/.git-credential-cache:$HOME/.git-credential-cache:ro \
+        -v $HOME/.gitignore_global:$HOME/.gitignore_global:ro \
+        -v $HOME/$config_dir:$HOME/$config_dir:rw \
+        -v $HOME/workspace/:/workspace \
+        -v $(dirname $SSH_AUTH_SOCK):$(dirname $SSH_AUTH_SOCK) \
+        $docker_image
+}
+
+function install {
+    git-cola install
+    intellij install
+    phpstorm install
+}
+
+$COMMAND
