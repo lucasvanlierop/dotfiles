@@ -215,6 +215,17 @@ function git-cola {
 }
 
 function rainbowstream {
+    local name="rainbowstream"
+    local version="latest"
+    local title="Rainbowstream"
+    local docker_image="jess/rainbowstream:$version"
+
+    if [[ $1 == "install" ]]; then
+        create_executable "$name" > /dev/null
+        echo "Installed $title $version"
+        return 0
+    fi
+
     docker run \
         --name rainbowstream \
         -it \
@@ -222,13 +233,14 @@ function rainbowstream {
         -v /etc/localtime:/etc/localtime:ro \
         -v $HOME/.rainbow_oauth:/root/.rainbow_oauth \
         -v $HOME/.rainbow_config.json:/root/.rainbow_config.json \
-        jess/rainbowstream
+        $docker_image
 }
 
 function install {
     git-cola install
     intellij install
     phpstorm install
+    rainbowstream install
 }
 
 $COMMAND
