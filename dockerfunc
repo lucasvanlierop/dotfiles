@@ -94,7 +94,7 @@ del_stopped(){
 # Run with install to install
 
 # Starts the application
-function intellij() {
+function intellij {
     local name="intellij"
     local version="ultimate-2016.2.3"
     local title="JetBrains IntelliJ"
@@ -141,7 +141,7 @@ function intellij() {
         $docker_image
 }
 
-function phpstorm() {
+function phpstorm {
     local name="phpstorm"
     local version="10.0.4"
     local title="JetBrains PHPStorm"
@@ -178,7 +178,7 @@ function phpstorm() {
         $docker_image
 }
 # Starts the application
-function git-cola() {
+function git-cola {
     local name="git-cola"
     local version="latest"
     local title="Git Cola"
@@ -212,6 +212,17 @@ function git-cola() {
         -v $HOME/workspace/:/$HOME/workspace \
         -v $(dirname $SSH_AUTH_SOCK):$(dirname $SSH_AUTH_SOCK) \
         $docker_image
+}
+
+function rainbowstream {
+    docker run \
+        --name rainbowstream \
+        -it \
+        --rm \
+        -v /etc/localtime:/etc/localtime:ro \
+        -v $HOME/.rainbow_oauth:/root/.rainbow_oauth \
+        -v $HOME/.rainbow_config.json:/root/.rainbow_config.json \
+        jess/rainbowstream
 }
 
 function install {
