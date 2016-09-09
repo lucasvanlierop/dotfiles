@@ -137,7 +137,7 @@ function intellij() {
         -v $HOME/.android:$HOME/.android:rw \
         -v $HOME/$config_dir:$HOME/$config_dir:rw \
         -v $HOME/scala-2.11.8:/scala-2.11.8 \
-        -v $HOME/workspace/:/workspace \
+        -v $HOME/workspace/:/$HOME/workspace \
         $docker_image
 }
 
@@ -174,7 +174,7 @@ function phpstorm() {
         -v $HOME/.git-credential-cache:$HOME/.git-credential-cache:ro \
         -v $HOME/.gitignore_global:$HOME/.gitignore_global:ro \
         -v $HOME/$config_dir:$HOME/$config_dir:rw \
-        -v $HOME/workspace/:/workspace \
+        -v $HOME/workspace/:/$HOME/workspace \
         $docker_image
 }
 # Starts the application
@@ -209,7 +209,7 @@ function git-cola() {
         -v $HOME/.git-credential-cache:$HOME/.git-credential-cache:ro \
         -v $HOME/.gitignore_global:$HOME/.gitignore_global:ro \
         -v $HOME/$config_dir:$HOME/$config_dir:rw \
-        -v $HOME/workspace/:/workspace \
+        -v $HOME/workspace/:/$HOME/workspace \
         -v $(dirname $SSH_AUTH_SOCK):$(dirname $SSH_AUTH_SOCK) \
         $docker_image
 }
