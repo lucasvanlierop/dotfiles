@@ -249,7 +249,7 @@ slack(){
     local title="Slack"
     local config_dir=".config/Slack"
     local docker_image="jess/slack"
-    local logo="/usr/share/pixmaps/slack.png"
+    local logo="/usr/share/pixmaps/$name.png"
 
     if [[ $1 == "install" ]]; then
         if [ ! -d $HOME/$config_dir ]; then
@@ -257,9 +257,9 @@ slack(){
         fi
 
         # Copy logo from container
-        remove slack &&
-            docker run --name slack --entrypoint sleep $docker_image 0 &&
-            sudo docker cp slack:$logo $logo
+        remove $name &&
+            docker run --name $name --entrypoint sleep $docker_image 0 &&
+            sudo docker cp $name:$logo $logo
 
         create_launcher_configuration "$name" "$version" "$title" "$docker_image" "$logo"
 
@@ -267,10 +267,10 @@ slack(){
         return 0
     fi
 
-    remove slack
+    remove $name
 
-    sudo docker run \
-        --name slack \
+    docker run \
+        --name $name \
         -d \
         -u $UID \
         -e HOME=/home/$UID \
