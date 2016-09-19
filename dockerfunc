@@ -284,6 +284,8 @@ slack(){
         --group-add audio \
         --group-add video \
         -v $HOME/$config_dir:/home/$UID/$config_dir \
+        -v $HOME/Downloads:/home/$UID/Downloads \
+        -v $HOME/Dropbox/Downloads:/home/$UID/Dropbox/Downloads \
         $docker_image
 }
 
