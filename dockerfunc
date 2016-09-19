@@ -273,6 +273,7 @@ slack(){
         --name $name \
         -d \
         -u $UID \
+        --ipc host \
         -e HOME=/home/$UID \
         -v /etc/localtime:/etc/localtime:ro \
         -v /tmp/.X11-unix:/tmp/.X11-unix \
