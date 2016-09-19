@@ -231,7 +231,7 @@ rainbowstream(){
         return 0
     fi
 
-    remove rainbowstream
+    remove $name
 
     docker run \
         --name rainbowstream \
