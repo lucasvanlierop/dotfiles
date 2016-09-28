@@ -102,7 +102,7 @@ remove(){
 intellij(){
     local name="intellij"
     local version="ultimate-2016.2.3"
-    local title="JetBrains IntelliJ"
+    local title="IntelliJ"
     local config_dir=".IntelliJIdea2016.2"
     local docker_image="lucasvanlierop/intellij:$version"
 
