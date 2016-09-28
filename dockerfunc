@@ -148,9 +148,10 @@ intellij(){
 
 phpstorm(){
     local name="phpstorm"
-    local version="10.0.4"
-    local title="JetBrains PHPStorm"
-    local config_dir=".WebIde100"
+    local version="2016.1.2"
+    local title="PHPStorm"
+    local old_config_dir=".WebIde100"
+    local config_dir=".PhpStorm2016.1"
     local docker_image="lucasvanlierop/phpstorm:$version"
 
     if [[ $1 == "install" ]]; then
@@ -178,6 +179,7 @@ phpstorm(){
         -v $HOME/.gitconfig:$HOME/.gitconfig:ro \
         -v $HOME/.git-credential-cache:$HOME/.git-credential-cache:ro \
         -v $HOME/.gitignore_global:$HOME/.gitignore_global:ro \
+        -v $HOME/$old_config_dir:$HOME/$old_config_dir:ro \
         -v $HOME/$config_dir:$HOME/$config_dir:rw \
         -v $HOME/workspace/:/$HOME/workspace \
         $docker_image
