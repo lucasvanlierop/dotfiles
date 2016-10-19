@@ -175,6 +175,7 @@ phpstorm(){
         -e HOME=$HOME \
         -e DISPLAY=$DISPLAY \
         -e QT_X11_NO_MITSHM=1 \
+        -p 9000:9000 \
         -v /tmp/.X11-unix:/tmp/.X11-unix \
         -v $HOME/.gitconfig:$HOME/.gitconfig:ro \
         -v $HOME/.git-credential-cache:$HOME/.git-credential-cache:ro \
