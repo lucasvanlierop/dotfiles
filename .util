@@ -1,0 +1,26 @@
+#/usr/bin/local/env bash
+
+set -e
+
+COMMAND="$@"
+
+system_cleanup(){
+    set -x
+    # Based on: http://www.stchman.com/cleanup.html
+    sudo apt-get autoclean
+    sudo apt-get clean
+    sudo apt-get autoremove --purge
+}
+
+git_cleanup(){
+    #  Remove branches from index that have been removed remote
+    git fetch --prune
+
+    # Remove branches that have been merged to master
+    git branch --merged origin/master | grep -v "\* origin/master" | xargs -n 1 git branch -d
+
+    # Cleanup git index and refs
+    git gc
+}
+
+$COMMAND

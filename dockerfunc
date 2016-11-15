@@ -2,6 +2,10 @@
 
 set -e
 
+docker_stopall(){
+    docker kill $(docker ps -a -q)
+}
+
 LAUNCHER_DIR="/usr/share/applications"
 LOGO_DIR="/usr/share/pixmaps"
 EXECUTABLE_DIR="/usr/local/bin"
