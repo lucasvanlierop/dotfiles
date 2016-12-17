@@ -1,0 +1,43 @@
+<application>
+  <component name="RecentProjectsManager">
+    <option name="recentPaths">
+      <list>
+        <option value="$USER_HOME$/workspace/fp-in-scala" />
+        <option value="/workspace/fp-in-scala" />
+      </list>
+    </option>
+    <option name="openPaths">
+      <list>
+        <option value="$USER_HOME$/workspace/fp-in-scala" />
+      </list>
+    </option>
+    <option name="lastPath" value="$USER_HOME$/workspace/fp-in-scala" />
+    <option name="additionalInfo">
+      <map>
+        <entry key="$USER_HOME$/workspace/fp-in-scala">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-162.1812.17" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1477410060652" />
+              <option name="buildTimestamp" value="1472515200000" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="/workspace/fp-in-scala">
+          <value>
+            <RecentProjectMetaInfo>
+              <option name="build" value="IU-162.1812.17" />
+              <option name="productionCode" value="IU" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="projectOpenTimestamp" value="1473168973903" />
+              <option name="buildTimestamp" value="1472515200000" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="lastProjectLocation" value="/workspace" />
+  </component>
+</application>

@@ -1,0 +1,9 @@
+config/eval/*.key
+config/options/window.*
+config/options/statistics*
+config/options/recentPojects.xml*
+config/plugins/Scala/*.jar
+config/plugins/Scala/launcher/*.jar
+config/plugins/Scala/lib/*
+config/tasks/*
+system/*
