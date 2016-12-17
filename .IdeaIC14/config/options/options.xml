@@ -1,0 +1,23 @@
+<application>
+  <component name="PropertiesComponent">
+    <property name="log.debug.categories" value="" />
+    <property name="DefaultHtmlDoctype.MigrateToHtml5" value="true" />
+    <property name="DefaultHtmlDoctype.Refreshed" value="1" />
+    <property name="installation.uid" value="5a94cb37-37a2-4fda-900e-d1466a203f38" />
+    <property name="project.wizard.group" value="JAVA_MODULE" />
+    <property name="default.storage.format" value=".idea (directory based)" />
+    <property name="project.wizard.template" value="Java" />
+    <property name="file.chooser.recent.files" value="$USER_HOME$/workspace/parsersWorkshop&#10;/usr/lib/jvm/default-java" />
+    <property name="last.imported.location" value="$USER_HOME$/workspace/parsersWorkshop" />
+    <property name="create.project.preferred.importer" value="SBT" />
+    <property name="ProjectStructure.SecondLevelElements" value="0.2" />
+    <property name="project.jdk.splitter" value="0.2" />
+    <property name="toolwindow.stripes.buttons.info.shown" value="true" />
+    <property name="lastTip" value="2" />
+    <property name="file.colors.enable.non.project" value="Yellow" />
+    <property name="file.colors.enable.tests" value="Green" />
+    <property name="Non-Project Files" value="Yellow" />
+    <property name="Tests" value="Green" />
+    <property name="Scala.Splitter.Proportion" value="0.2" />
+  </component>
+</application>

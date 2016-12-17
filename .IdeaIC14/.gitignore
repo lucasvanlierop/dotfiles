@@ -1,0 +1,5 @@
+/config/plugins/Scala/*.jar
+/config/plugins/Scala/launcher/*.jar
+/config/plugins/Scala/lib/*
+/config/tasks/*
+/system/*
