@@ -1,0 +1,27 @@
+<application>
+  <component name="FileTypeManager" version="17">
+    <ignoreFiles list="*.hprof;*.pyc;*.pyo;*.rbc;*~;.DS_Store;.git;.hg;.svn;CVS;RCS;SCCS;__pycache__;_svn;rcs;" />
+    <extensionMap>
+      <mapping pattern="run-in-build-container" type="Bash" />
+      <mapping pattern="pre-commit" type="Bash" />
+      <mapping pattern="setup-github-authentication-for-composer" type="Bash" />
+      <mapping pattern="build-dev-images" type="Bash" />
+      <mapping pattern="setup-git-authentication-for-composer" type="Bash" />
+      <mapping ext="tgz" type="Native" />
+      <mapping ext="gz" type="Native" />
+      <mapping pattern="*.php.j2" type="PHP" />
+      <mapping ext="test" type="PHP" />
+      <mapping ext="cache" type="PHP" />
+      <mapping pattern="git-cola" type="PLAIN_TEXT" />
+      <mapping pattern="enumerate" type="PLAIN_TEXT" />
+      <mapping pattern="Makefile" type="PLAIN_TEXT" />
+      <mapping pattern="default-enable" type="PLAIN_TEXT" />
+      <mapping ext="cert" type="PLAIN_TEXT" />
+      <mapping ext="cbl" type="PLAIN_TEXT" />
+      <mapping ext="key" type="PLAIN_TEXT" />
+      <mapping ext="env" type="PLAIN_TEXT" />
+      <mapping ext="gpg" type="PLAIN_TEXT" />
+      <mapping pattern="*.xml.dist" type="XML" />
+    </extensionMap>
+  </component>
+</application>
