@@ -1,0 +1,5 @@
+{1}
+{imageyear}{imagemonth}{imageday}_{imagetime}_{1}
+{imagewidth}x{imageheight}_{1}
+{imageyear}-{imagemonth}-{imageday}-{imagetime}
+{imageyear}-{imagemonth}-{imageday}-{imagetime}
