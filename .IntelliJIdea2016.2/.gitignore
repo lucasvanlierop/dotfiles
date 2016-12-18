@@ -1,6 +1,7 @@
 config/eval/*.key
+config/options/dimensions.xml
 config/options/window.*
-config/options/statistics*
+config/options/*statistics*
 config/options/recentPojects.xml*
 config/plugins/Scala/*.jar
 config/plugins/Scala/launcher/*.jar

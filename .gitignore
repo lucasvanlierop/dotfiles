@@ -33,9 +33,7 @@
 .config/menus
 .config/monitors.xml*
 .config/nautilus
-
 .config/pavucontrol.ini
-config/plugins
 .config/pulse
 .config/QtProject.conf
 .config/signond/signon.db
