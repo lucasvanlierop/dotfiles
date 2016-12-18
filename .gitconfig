@@ -1,0 +1,11 @@
+[user]
+	email = lucas@vanlierop.org
+	name = Lucas van Lierop
+[core]
+	excludesfile = ~/.gitignore_global
+[cola]
+	textwidth = 69
+[push]
+	default = simple
+[merge]
+	keepbackup = false

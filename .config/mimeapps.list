@@ -1,0 +1,36 @@
+[Default Applications]
+x-scheme-handler/mailto=thunderbird.desktop
+message/rfc822=thunderbird.desktop
+application/x-extension-eml=thunderbird.desktop
+x-scheme-handler/http=google-chrome.desktop
+text/html=google-chrome.desktop
+text/xml=google-chrome.desktop
+application/xhtml+xml=firefox.desktop
+application/xml=firefox.desktop
+application/rss+xml=firefox.desktop
+application/rdf+xml=firefox.desktop
+image/gif=firefox.desktop
+image/jpeg=eog.desktop
+image/png=eog.desktop
+x-scheme-handler/https=google-chrome.desktop
+x-scheme-handler/ftp=google-chrome.desktop
+x-scheme-handler/chrome=firefox.desktop
+video/webm=firefox.desktop
+application/x-xpinstall=firefox.desktop
+application/xhtml_xml=google-chrome.desktop
+image/webp=google-chrome.desktop
+video/mp2t=vlc.desktop
+
+[Added Associations]
+x-scheme-handler/mailto=thunderbird.desktop;
+message/rfc822=thunderbird.desktop;
+application/x-extension-eml=thunderbird.desktop;
+text/html=firefox.desktop;google-chrome.desktop;
+text/xml=firefox.desktop;google-chrome.desktop;
+application/xml=libreoffice-calc.desktop;google-chrome.desktop;
+image/jpeg=firefox.desktop;eog.desktop;
+x-scheme-handler/https=firefox.desktop;google-chrome.desktop;
+x-scheme-handler/ftp=firefox.desktop;google-chrome.desktop;
+video/mp2t=vlc.desktop;
+image/png=eog.desktop;
+inode/symlink=gedit.desktop;

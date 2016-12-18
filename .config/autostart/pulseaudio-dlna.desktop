@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=pulseaudio-dlna
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_US]=Pulse audio dlna
+Name=Pulse audio dlna
+Comment[en_US]=Adds audio output for Chromecast
+Comment=Adds audio output for Chromecast
