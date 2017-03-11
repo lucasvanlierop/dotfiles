@@ -1,6 +1,6 @@
 config/componentVersions/*
 config/consoles/db
-config/consoles/.history/db/36b49007-fbca-4fa9-87b5-8a1a46fc940e.sql
+config/consoles/.history
 config/disabled_plugins.txt
 config/disabled_update.txt
 config/eval/*.key
@@ -18,11 +18,14 @@ config/options/cachedDictionary.xml
 config/options/databaseDrivers.xml
 config/options/databaseSettings.xml
 config/options/debugger.xml
+config/options/diff.xml
 config/options/dimensions.xml
 config/options/editor.codeinsight.xml
 config/options/editor.xml
 config/options/extensionsRootType.xml
+config/options/fileEditorProviderManager.xml
 config/options/file.template.settings.xml
+config/options/filetypes.xml
 config/options/find*.xml
 config/options/github_settings.xml
 config/options/git.xml
@@ -39,8 +42,10 @@ config/options/other.xml
 config/options/path.macros.xml
 config/options/php.xml
 config/options/project.default.xml
+config/options/proxy.settings.pwd
 config/options/proxy.settings.xml
 config/options/recentProjectDirectories.xml
+config/options/remote-servers.xml
 config/options/runner-layout.xml
 config/options/runner.layout.xml
 config/options/security.xml
@@ -61,5 +66,5 @@ config/plugins/*
 config/port
 config/port.lock
 config/tasks/*
-phpstorm64.vmoptions
+config/user.web.token
 system/*
