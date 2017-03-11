@@ -51,9 +51,11 @@
 .config/yelp
 .dcos/dcos.toml
 Desktop
+.dbus/session-bus
 .dia
 .dmrc
 .docker/config.json
+.docker/machine
 Downloads
 .dropbox
 Dropbox
