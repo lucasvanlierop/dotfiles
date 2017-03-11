@@ -272,6 +272,7 @@ slack(){
 
     remove $name
 
+    # https://github.com/fgrehm/notify-send-http
     docker run \
         --name $name \
         -d \
