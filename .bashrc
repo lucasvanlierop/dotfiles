@@ -1,1 +1,1 @@
-source .bash-env-vars
+source ~/.bash-env-vars
