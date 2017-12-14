@@ -723,6 +723,17 @@
         <option name="FOREGROUND" value="908b25" />
       </value>
     </option>
+    <option name="MAKEFILE_SPECIAL_TARGET">
+      <value>
+        <option name="FOREGROUND" value="c60300" />
+        <option name="FONT_TYPE" value="2" />
+      </value>
+    </option>
+    <option name="MAKEFILE_VARIABLE">
+      <value>
+        <option name="FOREGROUND" value="a9b7c6" />
+      </value>
+    </option>
     <option name="MATCHED_BRACE_ATTRIBUTES">
       <value>
         <option name="FOREGROUND" value="ff8647" />
