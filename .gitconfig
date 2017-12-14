@@ -6,6 +6,8 @@
 [cola]
 	textwidth = 69
 [push]
-	default = simple
+	default = current
+[pull]
+	default = current
 [merge]
 	keepbackup = false
