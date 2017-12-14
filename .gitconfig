@@ -1,5 +1,5 @@
 [user]
-	email = lucas@vanlierop.org
+	email = me@lucasvanlierop.nl
 	name = Lucas van Lierop
 [core]
 	excludesfile = ~/.gitignore_global
