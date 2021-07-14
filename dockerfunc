@@ -146,6 +146,67 @@ intellij(){
         $docker_image
 }
 
+libreoffice(){
+    local name="libreoffice"
+    local version="latest"
+    local title="Libre Office"
+    local config_dir=".config/libreoffice"
+    local docker_image="chrisdaish/libreoffice:$version"
+
+    if [[ $1 == "install" ]]; then
+        if [ ! -d $HOME/$config_dir ]; then
+            mkdir $HOME/$config_dir
+        fi
+
+        # Copy logo from container
+        remove $name &&
+            docker run --name $name --entrypoint sleep $docker_image 0 &&
+            sudo docker cp $name:$logo $logo
+
+        create_launcher_configuration "$name" "$version" "$title" "$docker_image" "$logo"
+
+        echo "Installed $title $version"
+        return 0
+    fi
+
+    if [ ! -d $HOME/$config_dir ]; then
+        mkdir $HOME/$config_dir
+    fi
+
+    remove $name
+
+#-v $HOME/$config_dir:/home/$UID/$config_dir \
+#        -v $HOME/Dropbox:/home/$UID/Dropbox \
+#        -v $HOME:/home/$UID \
+
+    docker run --rm \
+        --name $name \
+        -u $UID \
+        -e HOME=/tmp \
+        -it \
+        -v /etc/localtime:/etc/localtime:ro \
+        -v /tmp/.X11-unix:/tmp/.X11-unix \
+        -e DISPLAY=unix$DISPLAY \
+        -v /etc/default/locale:/etc/default/locale:ro \
+        -e GDK_SCALE \
+        -e GDK_DPI_SCALE \
+        jess/libreoffice
+
+
+#    docker run \
+#        --name $name \
+#        --rm \
+#        -v /tmp/.X11-unix:/tmp/.X11-unix \
+#        -e uid=$(id -u) \
+#        -e gid=$(id -g) \
+#        -e DISPLAY=unix$DISPLAY \
+#        -v $HOME/Documents:/home/libreoffice/Documents:rw \
+#        -v $HOME/$config_dir:/home/libreoffice/$config_dir \
+#        -v $HOME/workspace:/home/libreoffice/workspace \
+#        -v $HOME/Dropbox:/home/libreoffice/Dropbox \
+#        chrisdaish/libreoffice
+}
+
 phpstorm(){
     local name="phpstorm"
     local version="2016.1.2"
